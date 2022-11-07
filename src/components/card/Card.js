@@ -1,9 +1,11 @@
 import "./Card.css";
-import cardData from "./CardData";
 
-export default function Card({ card, onBookmarkToggle, show, setShow }) {
+export default function Card({ card, onBookmarkToggle, onAnswerToggle }) {
   const handleBookmarkToggle = () => {
     onBookmarkToggle(card.id);
+  };
+  const handleAnswerToggle = () => {
+    onAnswerToggle(card.id);
   };
 
   return (
@@ -20,11 +22,8 @@ export default function Card({ card, onBookmarkToggle, show, setShow }) {
       />
       <>
         <p>{card.question}</p>
-
-        <button onClick={() => setShow(true)}>Show Answer</button>
-        <button onClick={() => setShow(false)}>Hide Answer</button>
-
-        {show ? <p>{card.answer}</p> : null}
+        <button onClick={handleAnswerToggle}>Show Answer</button>
+        <p>{card.answervisible ? card.answer : card.answerhidden}</p>
       </>
       <button className="Categories">#HTML </button>
       <button className="Categories">#Flexbox</button>
