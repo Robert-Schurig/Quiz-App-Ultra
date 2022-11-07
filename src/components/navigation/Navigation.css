@@ -1,0 +1,25 @@
+ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+
+li {
+  border-radius: 40%;
+  border: solid 2px;
+  padding: 20px;
+}
+
+.navigation {
+  width: 100vw;
+  bottom: 0;
+  height: 80px;
+  padding-bottom: 4vh;
+  position: fixed;
+  z-index: 1;
+  background-color: yellow;
+}
+
+.icons {
+  height: 3vh;
+}
