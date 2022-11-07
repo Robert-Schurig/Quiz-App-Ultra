@@ -1,23 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/header/header/Header";
+import Card from "./components/card/Card";
+import Navigation from "./components/navigation/Navigation";
+import { useState } from "react";
+import cardData from "./components/card/CardData";
 
 function App() {
+  const [cards, setCards] = useState(cardData);
+  const [buttonText, setButtonText] = useState(cardData);
+  const [show, setShow] = useState(false);
+
+  const handleBookmarkToggle = (id) => {
+    setCards(
+      cards.map((card) => {
+        if (id === card.id) {
+          return { ...card, bookmarked: !card.bookmarked };
+        } else {
+          return card;
+        }
+      })
+    );
+  };
+
+  // const handleAnswerToggle = (id) => {
+  //   setCards(
+  //     cards.map((card) => {
+  //       if (id === card.id) {
+  //         return { ...card, bookmarked: !card.bookmarked };
+  //       } else {
+  //         return card;
+  //       }
+  //     })
+  //   );
+  // };
+  // setToggle(!toggle);
+  // setButtonText(toggle ? "Show Answer" : "Hide Answer");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      {cards.map((card) => {
+        return (
+          <Card
+            key={card.id}
+            card={card}
+            onBookmarkToggle={(id) => {
+              handleBookmarkToggle(id);
+            }}
+            setShow={setShow}
+          />
+        );
+      })}
+
+      <Navigation />
     </div>
   );
 }
