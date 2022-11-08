@@ -10,6 +10,19 @@ function App() {
   const [buttonText, setButtonText] = useState(cardData);
   const [show, setShow] = useState(false);
 
+  const pageComponent =
+    currentPage === "home" ? (
+      <Home />
+    ) : currentPage === "bookmark" ? (
+      <Bookmark />
+    ) : currentPage === "createcard" ? (
+      <CreateCard />
+    ) : currentPage === "profile" ? (
+      <Profile />
+    ) : (
+      <h2>Seite nicht gefunden.</h2>
+    );
+
   const handleBookmarkToggle = (id) => {
     setCards(
       cards.map((card) => {
@@ -38,6 +51,7 @@ function App() {
 
   return (
     <div className="App">
+<<<<<<< Updated upstream
       <Header />
       {cards.map((card) => {
         return (
@@ -53,6 +67,36 @@ function App() {
       })}
 
       <Navigation />
+=======
+      <main className="app__main">
+        <Header />
+        <Bookmark currentPage={currentPage} />
+        {cards.map((card) => {
+          return (
+            <Card
+              key={card.id}
+              card={card}
+              currentPage={currentPage}
+              onBookmarkToggle={(id) => {
+                handleBookmarkToggle(id);
+              }}
+              onAnswerToggle={(id) => {
+                handleAnswerToggle(id);
+              }}
+            />
+          );
+        })}
+        <CreateCard currentPage={currentPage} />
+        <Profile currentPage={currentPage} />
+      </main>
+
+      <Navigation
+        currentPage={currentPage}
+        onNavChange={(page) => {
+          setCurrentPage(page);
+        }}
+      />
+>>>>>>> Stashed changes
     </div>
   );
 }

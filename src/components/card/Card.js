@@ -8,6 +8,7 @@ export default function Card({ card, onBookmarkToggle, show, setShow }) {
 
   return (
     <div>
+<<<<<<< Updated upstream
       <img
         src={
           card.bookmarked
@@ -29,6 +30,28 @@ export default function Card({ card, onBookmarkToggle, show, setShow }) {
       <button className="Categories">#HTML </button>
       <button className="Categories">#Flexbox</button>
       <button className="Categories">#CSS</button>
+=======
+      <section>
+        <img
+          src={
+            card.bookmarked
+              ? "./icons/bookmark.png"
+              : "./icons/save-instagram.png"
+          }
+          alt="Bookmark this question"
+          className="bookmark"
+          onClick={handleBookmarkToggle}
+        />
+        <>
+          <p>{card.question}</p>
+          <button onClick={handleAnswerToggle}>Show Answer</button>
+          <p>{card.answervisible ? card.answer : card.answerhidden}</p>
+        </>
+        <button className="Categories">#HTML </button>
+        <button className="Categories">#Flexbox</button>
+        <button className="Categories">#CSS</button>
+      </section>
+>>>>>>> Stashed changes
     </div>
   );
 }
