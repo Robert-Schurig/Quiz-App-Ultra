@@ -5,13 +5,17 @@ const cardData = [
     answer: "Testantwort",
     tags: ["a", "b"],
     bookmarked: false,
+    answervisible: true,
+    answerhidden: "",
   },
   {
     id: 2,
     question: "Testfrage 2",
     answer: "Testantwort 2",
     tags: ["c", "d"],
-    bookmarked: true,
+    bookmarked: false,
+    answervisible: false,
+    answerhidden: "",
   },
 ];
 
