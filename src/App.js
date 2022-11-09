@@ -4,11 +4,14 @@ import Card from "./components/card/Card";
 import Navigation from "./components/navigation/Navigation";
 import { useState } from "react";
 import cardData from "./components/card/CardData";
+import Bookmark from "./components/bookmark/Bookmark";
+import Profile from "./components/profile/Profile";
+import CreateCard from "./components/createcard/CreateCard";
+import Home from "./components/home/Home";
 
 function App() {
   const [cards, setCards] = useState(cardData);
-  const [buttonText, setButtonText] = useState(cardData);
-  const [show, setShow] = useState(false);
+  const [currentPage, setCurrentPage] = useState("home");
 
   const pageComponent =
     currentPage === "home" ? (
@@ -35,39 +38,20 @@ function App() {
     );
   };
 
-  // const handleAnswerToggle = (id) => {
-  //   setCards(
-  //     cards.map((card) => {
-  //       if (id === card.id) {
-  //         return { ...card, bookmarked: !card.bookmarked };
-  //       } else {
-  //         return card;
-  //       }
-  //     })
-  //   );
-  // };
-  // setToggle(!toggle);
-  // setButtonText(toggle ? "Show Answer" : "Hide Answer");
+  const handleAnswerToggle = (id) => {
+    setCards(
+      cards.map((card) => {
+        if (id === card.id) {
+          return { ...card, bookmarked: !card.bookmarked };
+        } else {
+          return card;
+        }
+      })
+    );
+  };
 
   return (
     <div className="App">
-<<<<<<< Updated upstream
-      <Header />
-      {cards.map((card) => {
-        return (
-          <Card
-            key={card.id}
-            card={card}
-            onBookmarkToggle={(id) => {
-              handleBookmarkToggle(id);
-            }}
-            setShow={setShow}
-          />
-        );
-      })}
-
-      <Navigation />
-=======
       <main className="app__main">
         <Header />
         <Bookmark currentPage={currentPage} />
@@ -96,7 +80,6 @@ function App() {
           setCurrentPage(page);
         }}
       />
->>>>>>> Stashed changes
     </div>
   );
 }
